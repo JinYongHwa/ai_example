@@ -9,6 +9,9 @@
       <div class="text-center">
         <v-btn color="primary" @click="submit">그리기</v-btn>
       </div>
+      <div>
+        <img :src="imageUrl" v-if="imageUrl">
+      </div>
     </div>
 </template>
 
@@ -26,7 +29,8 @@ export default defineComponent({
   },
   data(){
     return{
-      prompt:""
+      prompt:"",
+      imageUrl:null
     }
   },
   methods:{
@@ -37,6 +41,9 @@ export default defineComponent({
       }
       this.$axios.post("/api/image/generate",{
         prompt:this.prompt
+      })
+      .then(response=>{
+        this.imageUrl=response.data.imageUrl
       })
     }
   }
