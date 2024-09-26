@@ -1,7 +1,7 @@
 var puppeteer=require('puppeteer');
 var OpenAI=require("openai")
 var openai=new OpenAI()
-
+console.log("test")
 async function main(){
     var browser=await puppeteer.launch({headless:false})
     var page=await browser.newPage()
